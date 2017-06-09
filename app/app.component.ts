@@ -7,7 +7,8 @@ import { Animal } from './animal.model';
   <h1>My First Angular 2 App</h1>
 
   <animal-list [childAnimalList]="masterAnimalList"></animal-list>
-  <new-animal></new-animal>
+  <button (click)="createNewAnimal()">New Animal</button>
+  <new-animal [newAnimal]="newAnimal"></new-animal>
 
 
 
@@ -20,6 +21,7 @@ export class AppComponent {
   month: number = this.currentTime.getMonth() + 1;
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
+  newAnimal: Animal = null;
 
   masterAnimalList: Animal[] = [
     new Animal('Lion', 'Simba', 5, 'Carnivore', 'Africa', 2, 'Male', 'Eating a meal', 'Loud Noises', 'https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/56/84/7f/56847f89d1065e69cce987cd04b0dfad.jpg', 'Today'),
@@ -27,6 +29,10 @@ export class AppComponent {
     new Animal('Bear', 'Tim', 2, 'Carnivore', 'Europe', 3, 'Male', 'Scratching its back', 'Bees', 'https://upload.wikimedia.org/wikipedia/commons/7/71/2010-kodiak-bear-1.jpg', 'http://img.huffingtonpost.com/asset/scalefit_950_800_noupscale/562e81f4140000e800c7adb5.jpeg', 'Today')
   ];
 
+  createNewAnimal() {
+    this.newAnimal = new Animal('', '', 0, '', '', 0, '', '', '', 'http://1.bp.blogspot.com/-8mf73EG12r0/T795rlQvyaI/AAAAAAAAAxM/lPDqRoghhkg/s1600/animal+cartoon+10.gif', 'https://s-media-cache-ak0.pinimg.com/736x/59/27/ba/5927ba593780679eff94c5663c5c3e8a.jpg', 'Today');
+    this.masterAnimalList.push(this.newAnimal);
+  }
 
 
 }

@@ -6,9 +6,13 @@ import { Animal } from './animal.model';
   template: `
 
   <ul>
-    <div *ngFor="let currentAnimal of childAnimalList" class="centered">
-      <p>{{currentAnimal.name}} the {{currentAnimal.species}}</p>
+    <div *ngFor="let currentAnimal of childAnimalList" (click)="selectedAnimal=currentAnimal" class="centered">
+      <p>{{currentAnimal.name}} the {{currentAnimal.species}} stored at the {{currentAnimal.location}} exibit.</p>
       <img src="{{currentAnimal.logo}}" class="logo"/>
+      <button>Edit Animal</button>
+
+      <animal-detail [selectedAnimal]="selectedAnimal"></animal-detail>
+
     </div>
   </ul>
 
@@ -19,5 +23,6 @@ import { Animal } from './animal.model';
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
   @Output() clickSender = new EventEmitter();
+  selectedAnimal: Animal = null;
 
 }
