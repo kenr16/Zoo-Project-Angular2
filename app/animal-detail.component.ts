@@ -17,6 +17,7 @@ import { Animal } from './animal.model';
       <p>Specific Likes: {{currentAnimal.likes}}</p>
       <p>Specific Dislikes: {{currentAnimal.dislikes}}</p>
       <p>Animal Exibit Currently Housing Selected Animal: {{currentAnimal.location}}</p>
+      <p>Date Animal Admitted to Exhibit: {{currentAnimal.admitted}}</p>
       <button (click)="editButtonClicked(currentAnimal)">Edit Animal</button><br>
       <img src={{currentAnimal.image}} class="largeimage"/>
     </div>

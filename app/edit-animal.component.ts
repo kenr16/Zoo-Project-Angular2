@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Animal } from './animal.model';
 
 @Component({
@@ -55,6 +55,7 @@ import { Animal } from './animal.model';
 export class EditAnimalComponent {
   // @Output() newTaskSender = new EventEmitter();
   @Input() animalToEdit: Animal;
+  @Output() editFinishedSender = new EventEmitter();
 
   submitForm(location: number) {
     var locationString = ''
@@ -67,8 +68,7 @@ export class EditAnimalComponent {
     }
     this.animalToEdit.location = locationString;
     this.animalToEdit = null;
+    this.editFinishedSender.emit();
   }
-
-
 
 }
