@@ -23,7 +23,7 @@ export class AgePipe implements PipeTransform {
       }
     }
     for (var i = 0; i < careFiltered.length; i++) {
-      if (careFiltered[i].diet == dietFilter) {
+      if (careFiltered[i].diet == dietFilter || careFiltered[i].diet == 'Omnivore') {
         dietFiltered.push(careFiltered[i]);
       }
     }
