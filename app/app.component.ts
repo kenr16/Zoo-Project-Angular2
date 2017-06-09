@@ -6,6 +6,16 @@ import { Animal } from './animal.model';
   template: `
   <h1>Animal Zoo</h1>
 
+  <img src="/resources/images/blankBottle.png"/>
+
+  <img src="/resources/images/zoomap.jpeg" alt="" usemap="#Map" />
+  <map name="Map" id="Map">
+      <area alt="" title="" href="#" shape="poly" coords="251,177,435,304,478,366,540,396,580,358,646,352,624,245,759,200,772,39,461,38,473,127,328,114" />
+      <area alt="" title="" href="#" shape="poly" coords="245,177,433,305,536,399,492,433,485,474,545,494,632,495,683,543,622,620,491,613,437,582,301,639,226,613,150,617,117,577,66,595,13,550,26,488,9,435,53,374,25,315,117,291,127,217" />
+      <area alt="" title="" href="#" shape="poly" coords="776,40,764,198,628,248,648,358,586,359,496,436,489,471,541,489,631,492,686,542,626,622,707,646,761,634,840,648,916,650,955,606,952,580,990,544,996,472,964,408,941,296,983,231,968,189,970,72,981,49,857,28" />
+      [...]
+  </map>
+
   <animal-list [childAnimalList]="masterAnimalList" (editSender2)="editAnimal($event)"></animal-list>
   <button (click)="createNewAnimal()">New Animal</button>
   <new-animal [newAnimal]="newAnimal"></new-animal>
