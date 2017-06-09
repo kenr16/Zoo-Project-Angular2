@@ -8,13 +8,20 @@ import {Animal} from './animal.model';
 
 
 export class AgePipe implements PipeTransform {
-  transform(input: Animal[], ageGroup) {
-    var output: Animal[] = [];
+  transform(input: Animal[], ageGroup, caretakersGroup) {
+    var ageFiltered: Animal[] = [];
+    var careFiltered: Animal[] = [];
     for (var i = 0; i < input.length; i++) {
       if (input[i].age <= ageGroup) {
-        output.push(input[i]);
+        ageFiltered.push(input[i]);
       }
     }
-    return output;
+    for (var i = 0; i < ageFiltered.length; i++) {
+      if (ageFiltered[i].caretakers <= caretakersGroup) {
+        careFiltered.push(ageFiltered[i]);
+      }
+    }
+
+    return careFiltered;
   }
 }
