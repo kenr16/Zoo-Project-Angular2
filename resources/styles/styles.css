@@ -1,0 +1,19 @@
+.logo {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 100px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: gold;
+}
+
+.logo:hover {
+  width: 175px;
+  height: 175px;
+}
+
+.centered {
+  text-align: center;
+  object-position: center;
+}
