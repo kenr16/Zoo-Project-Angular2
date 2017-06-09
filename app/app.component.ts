@@ -4,13 +4,12 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'app-root',
   template: `
-  <h1>My First Angular 2 App</h1>
+  <h1>Animal Zoo</h1>
 
-  <animal-list [childAnimalList]="masterAnimalList"></animal-list>
+  <animal-list [childAnimalList]="masterAnimalList" (editSender)="editAnimal($event)"></animal-list>
   <button (click)="createNewAnimal()">New Animal</button>
   <new-animal [newAnimal]="newAnimal"></new-animal>
-
-
+  <edit-animal [animalToEdit]="animalToEdit"></edit-animal>
 
   `
 })
@@ -22,6 +21,7 @@ export class AppComponent {
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
   newAnimal: Animal = null;
+  animalToEdit: Animal = null;
 
   masterAnimalList: Animal[] = [
     new Animal('Lion', 'Simba', 5, 'Carnivore', 'Africa', 2, 'Male', 'Eating a meal', 'Loud Noises', 'https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg', 'https://s-media-cache-ak0.pinimg.com/736x/56/84/7f/56847f89d1065e69cce987cd04b0dfad.jpg', 'Today'),
@@ -34,5 +34,9 @@ export class AppComponent {
     this.masterAnimalList.push(this.newAnimal);
   }
 
+  editAnimal(recievedAnimal) {
+    this.animalToEdit = recievedAnimal;
+    console.log(this.animalToEdit);
+  }
 
 }

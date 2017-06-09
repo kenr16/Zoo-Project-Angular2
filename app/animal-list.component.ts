@@ -7,11 +7,11 @@ import { Animal } from './animal.model';
 
   <ul>
     <div *ngFor="let currentAnimal of childAnimalList" (click)="selectedAnimal=currentAnimal" class="centered">
-      <p>{{currentAnimal.name}} the {{currentAnimal.species}} stored at the {{currentAnimal.location}} exibit.</p>
-      <img src="{{currentAnimal.logo}}" class="logo"/>
-      <button>Edit Animal</button>
+      <h2>{{currentAnimal.name}} the {{currentAnimal.species}} stored at the {{currentAnimal.location}} exibit.</h2>
+      <img src="{{currentAnimal.logo}}" class="logo"/><br>
+      <button (click)="editButtonClicked(currentAnimal)">Edit Animal</button>
 
-      <animal-detail [selectedAnimal]="selectedAnimal"></animal-detail>
+      <animal-detail [selectedAnimal]="currentAnimal"></animal-detail>
 
     </div>
   </ul>
@@ -22,7 +22,11 @@ import { Animal } from './animal.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
-  @Output() clickSender = new EventEmitter();
+  @Output() editSender = new EventEmitter();
   selectedAnimal: Animal = null;
+
+  editButtonClicked(currentAnimal) {
+    this.editSender.emit(currentAnimal);
+  }
 
 }
