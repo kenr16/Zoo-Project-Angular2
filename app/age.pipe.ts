@@ -8,9 +8,10 @@ import {Animal} from './animal.model';
 
 
 export class AgePipe implements PipeTransform {
-  transform(input: Animal[], ageGroup, caretakersGroup) {
+  transform(input: Animal[], ageGroup, caretakersGroup, dietFilter) {
     var ageFiltered: Animal[] = [];
     var careFiltered: Animal[] = [];
+    var dietFiltered: Animal[] = [];
     for (var i = 0; i < input.length; i++) {
       if (input[i].age <= ageGroup) {
         ageFiltered.push(input[i]);
@@ -21,7 +22,15 @@ export class AgePipe implements PipeTransform {
         careFiltered.push(ageFiltered[i]);
       }
     }
-
-    return careFiltered;
+    for (var i = 0; i < careFiltered.length; i++) {
+      if (careFiltered[i].diet == dietFilter) {
+        dietFiltered.push(careFiltered[i]);
+      }
+    }
+    if (dietFilter == 'Omnivore') {
+      return careFiltered;
+    } else {
+      return dietFiltered;
+    }
   }
 }

@@ -11,8 +11,14 @@ import { Animal } from './animal.model';
   <label>Filter Animals by Number of Caretakers</label>
   <input [(ngModel)]='caretakersGroup' type='number' min='0' max='100'>
 
+  <select (change)="onChange($event.target.value)">
+    <option value="Carnivore">Carnivores</option>
+    <option value="Herbivore">Herbivores</option>
+    <option value="Omnivore" selected="selected">Omnivores</option>
+  </select>
+
   <ul>
-    <div *ngFor="let currentAnimal of childAnimalList | agepipe:ageGroup:caretakersGroup" class="centered">
+    <div *ngFor="let currentAnimal of childAnimalList | agepipe:ageGroup:caretakersGroup:dietFilter" class="centered">
       <div>
         <h2>{{currentAnimal.name}} the {{currentAnimal.species}} stored at the {{currentAnimal.location}} exibit.</h2>
       </div>
@@ -30,6 +36,11 @@ export class AnimalListComponent {
   @Output() editSender2 = new EventEmitter();
   ageGroup = 100;
   caretakersGroup = 100;
+  dietFilter = 'Omnivore'
+
+  onChange(optionFromMenu) {
+    this.dietFilter = optionFromMenu;
+  }
 
   editButtonClicked(currentAnimal) {
     this.editSender2.emit(currentAnimal);
