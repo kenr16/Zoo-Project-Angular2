@@ -6,11 +6,11 @@ import { Animal } from './animal.model';
   template: `
   <h1>Animal Zoo</h1>
 
-  <animal-list [childAnimalList]="masterAnimalList" (editSender)="editAnimal($event)"></animal-list>
+  <animal-list [childAnimalList]="masterAnimalList" (editSender2)="editAnimal($event)"></animal-list>
   <button (click)="createNewAnimal()">New Animal</button>
   <new-animal [newAnimal]="newAnimal"></new-animal>
   <edit-animal [animalToEdit]="animalToEdit"></edit-animal>
-
+  {{year}}{{month}}{{day}}
   `
 })
 
